@@ -12,7 +12,7 @@ namespace CaesarCipher
     using System.Collections.Immutable;
     using System.Linq;
 
-    public class CeaserCipherEncryption
+    public class CaeserCipherEncryption
     {
         private readonly ImmutableArray<char> _alphabet;
 
@@ -32,7 +32,7 @@ namespace CaesarCipher
         /// <param name="alphabet"> The alphabet of the encryption. Must contain unique character in the
         /// desired order. </param>
         /// <param name="key">      The key of the encryption. </param>
-        public CeaserCipherEncryption(ImmutableArray<char> alphabet, int key)
+        public CaeserCipherEncryption(ImmutableArray<char> alphabet, int key)
         {
             this._alphabet = alphabet;
             this._dictionaryLength = alphabet.Length;

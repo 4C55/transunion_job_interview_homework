@@ -4,7 +4,7 @@
 /// Copyright (c) 2022 Guldmann. All rights reserved.
 /// </copyright>
 ///
-/// <summary>   Implements unit tests for the <see cref="CaesarCipher.CeaserCipherEncryption"/> class.</summary>
+/// <summary>   Implements unit tests for the <see cref="CaesarCipher.CaeserCipherEncryption"/> class.</summary>
 namespace CeaserCipherTests
 {
     using CaesarCipher;
@@ -14,14 +14,14 @@ namespace CeaserCipherTests
     using System.Collections.Immutable;
 
     [TestClass]
-    public class CeaserCipherEncryptionTests
+    public class CaeserCipherEncryptionTests
     {
         /// <summary>   Unit Test Method checking the scenario when an alphabet with duplicate symbols is provided. </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestInvalidAlphabet()
         {
-            new CeaserCipherEncryption(ImmutableArray.Create('A', 'B', 'A'), 0);
+            new CaeserCipherEncryption(ImmutableArray.Create('A', 'B', 'A'), 0);
         }
 
         /// <summary>   Unit Test Method checking the scenario when an invlaid symbol is being encrypted. </summary>
@@ -29,7 +29,7 @@ namespace CeaserCipherTests
         [ExpectedException(typeof(ArgumentException))]
         public void TestEncryptionInvalidSymbol()
         {
-            CeaserCipherEncryption ceaserCipher = new CeaserCipherEncryption(CeaserCipherAlphabet.English, 1);
+            CaeserCipherEncryption ceaserCipher = new CaeserCipherEncryption(CaeserCipherAlphabet.English, 1);
             ceaserCipher.Encrypt("HELLO*WORLD");
         }
 
@@ -38,7 +38,7 @@ namespace CeaserCipherTests
         [ExpectedException(typeof(ArgumentException))]
         public void TestDecryptionInvalidSymbol()
         {
-            CeaserCipherEncryption ceaserCipher = new CeaserCipherEncryption(CeaserCipherAlphabet.English, -1);
+            CaeserCipherEncryption ceaserCipher = new CaeserCipherEncryption(CaeserCipherAlphabet.English, -1);
             ceaserCipher.Decrypt("HELLOWORLD|");
         }
 
@@ -47,7 +47,7 @@ namespace CeaserCipherTests
         [DynamicData(nameof(EncryptionTestCases), DynamicDataSourceType.Property)]
         public void TestEncryption(ImmutableArray<char> alphabet, int key, string text, string expectedCipher)
         {
-            CeaserCipherEncryption ceaserCipher = new CeaserCipherEncryption(alphabet, key);
+            CaeserCipherEncryption ceaserCipher = new CaeserCipherEncryption(alphabet, key);
             string actualCipher = ceaserCipher.Encrypt(text);
             Assert.AreEqual(actualCipher, expectedCipher);
         }
@@ -57,7 +57,7 @@ namespace CeaserCipherTests
         [DynamicData(nameof(DecryptionTestCases), DynamicDataSourceType.Property)]
         public void TestDecryption(ImmutableArray<char> alphabet, int key, string cipher, string expectedText)
         {
-            CeaserCipherEncryption ceaserCipher = new CeaserCipherEncryption(alphabet, key);
+            CaeserCipherEncryption ceaserCipher = new CaeserCipherEncryption(alphabet, key);
             string actualText = ceaserCipher.Decrypt(cipher);
             Assert.AreEqual(expectedText, actualText);
         }
@@ -66,10 +66,10 @@ namespace CeaserCipherTests
         {
             get
             {
-                yield return new object[] { CeaserCipherAlphabet.English, 21, "GJIBZMNOMDIBQVGPZAJMOZNON", "LONGERSTRINGVALUEFORTESTS" };
-                yield return new object[] { CeaserCipherAlphabet.English, 0, "HELLOWORLD", "HELLOWORLD" };
-                yield return new object[] { CeaserCipherAlphabet.English, -1, "QZMCNLSDWS", "RANDOMTEXT" };
-                yield return new object[] { CeaserCipherAlphabet.English, -20, "YUSKZNOTM", "SOMETHING" }; 
+                yield return new object[] { CaeserCipherAlphabet.English, 21, "GJIBZMNOMDIBQVGPZAJMOZNON", "LONGERSTRINGVALUEFORTESTS" };
+                yield return new object[] { CaeserCipherAlphabet.English, 0, "HELLOWORLD", "HELLOWORLD" };
+                yield return new object[] { CaeserCipherAlphabet.English, -1, "QZMCNLSDWS", "RANDOMTEXT" };
+                yield return new object[] { CaeserCipherAlphabet.English, -20, "YUSKZNOTM", "SOMETHING" }; 
             }
         }
 
@@ -77,10 +77,10 @@ namespace CeaserCipherTests
         {
             get
             {
-                yield return new object[] { CeaserCipherAlphabet.English, 0, "HELLOWORLD", "HELLOWORLD" };
-                yield return new object[] { CeaserCipherAlphabet.English, 5, "HELLOWORLD", "MJQQTBTWQI" };
-                yield return new object[] { CeaserCipherAlphabet.English, -100, "HELLOWORLD", "LIPPSASVPH" };
-                yield return new object[] { CeaserCipherAlphabet.English, 55, "RANDOMTEXT", "UDQGRPWHAW" };
+                yield return new object[] { CaeserCipherAlphabet.English, 0, "HELLOWORLD", "HELLOWORLD" };
+                yield return new object[] { CaeserCipherAlphabet.English, 5, "HELLOWORLD", "MJQQTBTWQI" };
+                yield return new object[] { CaeserCipherAlphabet.English, -100, "HELLOWORLD", "LIPPSASVPH" };
+                yield return new object[] { CaeserCipherAlphabet.English, 55, "RANDOMTEXT", "UDQGRPWHAW" };
             }
         }
     }
