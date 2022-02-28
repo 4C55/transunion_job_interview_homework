@@ -9,6 +9,6 @@ Please implement this https://en.wikipedia.org/wiki/Caesar_cipher.
 
 ## Solution
 
-* The implementation of the Ceaser Cipher can be found in CaesarCipher\CeaserCipherEncryption.cs
-* Unit tests for the implementation can be found in CeaserCipherTests\CeaserCipherEncryptionTests.cs
+* The implementation of the Ceaser Cipher can be found in CaesarCipher\CaeserCipherEncryption.cs
+* Unit tests for the implementation can be found in CaeserCipherTests\CeaserCipherEncryptionTests.cs
 * Example use of the implementation can be found in CaesarCipher\Program.cs
